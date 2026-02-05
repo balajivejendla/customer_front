@@ -158,6 +158,7 @@ class AuthService {
       const firstName = nameParts[0] || name;
       const lastName = nameParts.slice(1).join(' ') || nameParts[0];
 
+      console.log('📝 Attempting registration for:', email);
       const response = await fetch(`${API_BASE_URL}/auth/register`, {
         method: 'POST',
         headers: {
@@ -167,13 +168,27 @@ class AuthService {
       });
 
       const data = await response.json();
+      console.log('📥 Registration response:', { success: data.success, hasTokens: !!data.tokens, hasAccessToken: !!data.accessToken });
 
       if (!response.ok) {
         throw new Error(data.error || data.errors?.join(', ') || 'Registration failed');
       }
 
-      if (data.success && data.tokens) {
-        this.storeTokens(data.tokens.accessToken, data.tokens.refreshToken);
+      // Handle both response formats: { tokens: { accessToken, refreshToken } } or { accessToken, refreshToken }
+      if (data.success) {
+        const accessToken = data.tokens?.accessToken || data.accessToken;
+        const refreshToken = data.tokens?.refreshToken || data.refreshToken;
+        
+        if (accessToken && refreshToken) {
+          console.log('💾 Storing tokens...');
+          this.storeTokens(accessToken, refreshToken);
+          console.log('✅ Tokens stored, verifying...');
+          console.log('🔍 Verification - accessToken in memory:', !!this.accessToken);
+          console.log('🔍 Verification - localStorage:', !!localStorage.getItem('accessToken'));
+        } else {
+          console.error('❌ No tokens in response:', data);
+          throw new Error('No authentication tokens received');
+        }
       }
 
       return data;
@@ -186,6 +201,7 @@ class AuthService {
   // Login user
   async login(email: string, password: string): Promise<AuthResponse> {
     try {
+      console.log('🔐 Attempting login for:', email);
       const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
@@ -195,13 +211,27 @@ class AuthService {
       });
 
       const data = await response.json();
+      console.log('📥 Login response:', { success: data.success, hasTokens: !!data.tokens, hasAccessToken: !!data.accessToken });
 
       if (!response.ok) {
         throw new Error(data.error || data.errors?.join(', ') || 'Login failed');
       }
 
-      if (data.success && data.tokens) {
-        this.storeTokens(data.tokens.accessToken, data.tokens.refreshToken);
+      // Handle both response formats: { tokens: { accessToken, refreshToken } } or { accessToken, refreshToken }
+      if (data.success) {
+        const accessToken = data.tokens?.accessToken || data.accessToken;
+        const refreshToken = data.tokens?.refreshToken || data.refreshToken;
+        
+        if (accessToken && refreshToken) {
+          console.log('💾 Storing tokens...');
+          this.storeTokens(accessToken, refreshToken);
+          console.log('✅ Tokens stored, verifying...');
+          console.log('🔍 Verification - accessToken in memory:', !!this.accessToken);
+          console.log('🔍 Verification - localStorage:', !!localStorage.getItem('accessToken'));
+        } else {
+          console.error('❌ No tokens in response:', data);
+          throw new Error('No authentication tokens received');
+        }
       }
 
       return data;
