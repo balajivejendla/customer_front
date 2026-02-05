@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useEffect} from 'react'
 import {useRef} from 'react'
+import { Link } from 'react-router';
 type chatmessage={
     role:"user"|"assistant";
     content:string;
@@ -45,9 +46,31 @@ export default function Mainpage() {
 
     return (
         <main className="min-h-screen w-full flex bg-pink-300 justify-center items-center">
+            <Link to="/signup">
+            <button className="
+                h-14
+                m-4
+                px-5
+                rounded-full
+                bg-blue-600
+                text-white
+                hover:bg-blue-700
+                shrink-0">
+                Sign up
+            </button>
+            </Link>
+            <button className="h-14
+                px-5
+                rounded-full
+                bg-blue-600
+                text-white
+                hover:bg-blue-700
+                shrink-0">
+                Sign In
+            </button>
             <div className="m-10 border-0 bg-white p-8 rounded w-full max-w-3xl shadow-lg flex flex-col">
                 <h5 className="font-black text-black text-center w-full text-xl mb-4">
-                        Welcome to Cancer Detection Chatbot
+                        Customer Support
                 </h5>
 
                 <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-[60vh]">
