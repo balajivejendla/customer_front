@@ -1,7 +1,7 @@
 // Authentication Service
 // Handles all authentication API calls, token management, and auto-refresh
 
-const API_BASE_URL = 'http://localhost:4000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
 
 export interface User {
   id: string;
