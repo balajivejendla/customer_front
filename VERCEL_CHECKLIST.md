@@ -25,11 +25,9 @@
 Click "Environment Variables" and add:
 
 ```
-VITE_API_BASE_URL = https://your-backend.onrender.com
-VITE_WS_URL = https://your-backend.onrender.com
+VITE_API_BASE_URL = https://customer-h9ow.onrender.com
+VITE_WS_URL = https://customer-h9ow.onrender.com
 ```
-
-**⚠️ IMPORTANT**: Replace `your-backend.onrender.com` with your actual Render backend URL!
 
 ### 5. Deploy
 - Click "Deploy"
@@ -83,8 +81,8 @@ VITE_WS_URL=ws://localhost:3001            # Your local WebSocket
 
 ### Production (Vercel)
 ```env
-VITE_API_BASE_URL=https://your-backend.onrender.com  # Your Render backend
-VITE_WS_URL=https://your-backend.onrender.com        # Same URL for WebSocket
+VITE_API_BASE_URL=https://customer-h9ow.onrender.com  # Your Render backend
+VITE_WS_URL=https://customer-h9ow.onrender.com        # Same URL for WebSocket
 ```
 
 ## 🎯 Success Criteria

@@ -14,11 +14,9 @@ Your frontend needs these environment variables:
 
 **For Production:**
 ```env
-VITE_API_BASE_URL=https://your-backend.onrender.com
-VITE_WS_URL=https://your-backend.onrender.com
+VITE_API_BASE_URL=https://customer-h9ow.onrender.com
+VITE_WS_URL=https://customer-h9ow.onrender.com
 ```
-
-**Important**: Replace `your-backend.onrender.com` with your actual Render backend URL!
 
 ## Step 2: Deploy to Vercel
 
@@ -37,8 +35,8 @@ VITE_WS_URL=https://your-backend.onrender.com
 
 6. **Environment Variables**:
    - Click "Environment Variables"
-   - Add: `VITE_API_BASE_URL` = `https://your-backend.onrender.com`
-   - Add: `VITE_WS_URL` = `https://your-backend.onrender.com`
+   - Add: `VITE_API_BASE_URL` = `https://customer-h9ow.onrender.com`
+   - Add: `VITE_WS_URL` = `https://customer-h9ow.onrender.com`
 
 7. **Click "Deploy"**
 
@@ -102,8 +100,8 @@ VITE_WS_URL=ws://localhost:3001
 
 ### Production (Vercel Dashboard)
 ```env
-VITE_API_BASE_URL=https://your-backend.onrender.com
-VITE_WS_URL=https://your-backend.onrender.com
+VITE_API_BASE_URL=https://customer-h9ow.onrender.com
+VITE_WS_URL=https://customer-h9ow.onrender.com
 ```
 
 ## Troubleshooting
